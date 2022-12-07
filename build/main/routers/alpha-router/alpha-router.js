@@ -467,12 +467,12 @@ class AlphaRouter {
               pool.token1.equals(position.pool.token1) &&
               pool.fee == position.pool.fee
             ) {
-              targetPoolPriceUpdate = JSBI.BigInt(
+              targetPoolPriceUpdate = jsbi_1.default.BigInt(
                 v3Route.sqrtPriceX96AfterList[i].toString()
               );
               optimalRatio = this.calculateOptimalRatio(
                 position,
-                JSBI.BigInt(targetPoolPriceUpdate.toString()),
+                jsbi_1.default.BigInt(targetPoolPriceUpdate.toString()),
                 zeroForOne
               );
             }
@@ -1543,7 +1543,7 @@ class AlphaRouter {
     ) {
       return new sdk_core_1.Fraction(0, 1);
     }
-    const precision = JSBI.BigInt('1' + '0'.repeat(18));
+    const precision = jsbi_1.default.BigInt('1' + '0'.repeat(18));
     let optimalRatio = new sdk_core_1.Fraction(
       v3_sdk_1.SqrtPriceMath.getAmount0Delta(
         sqrtRatioX96,
@@ -1586,13 +1586,13 @@ class AlphaRouter {
   absoluteValue(fraction) {
     const numeratorAbs = jsbi_1.default.lessThan(
       fraction.numerator,
-      JSBI.BigInt(0)
+      jsbi_1.default.BigInt(0)
     )
       ? jsbi_1.default.unaryMinus(fraction.numerator)
       : fraction.numerator;
     const denominatorAbs = jsbi_1.default.lessThan(
       fraction.denominator,
-      JSBI.BigInt(0)
+      jsbi_1.default.BigInt(0)
     )
       ? jsbi_1.default.unaryMinus(fraction.denominator)
       : fraction.denominator;

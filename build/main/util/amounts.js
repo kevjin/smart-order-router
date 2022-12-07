@@ -24,7 +24,10 @@ function parseAmount(value, currency) {
     value,
     currency.decimals
   ).toString();
-  return CurrencyAmount.fromRawAmount(currency, JSBI.BigInt(typedValueParsed));
+  return CurrencyAmount.fromRawAmount(
+    currency,
+    jsbi_1.default.BigInt(typedValueParsed)
+  );
 }
 exports.parseAmount = parseAmount;
 function parseFeeAmount(feeAmountStr) {
