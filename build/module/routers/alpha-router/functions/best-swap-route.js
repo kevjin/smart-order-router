@@ -381,8 +381,8 @@ export async function getBestSwapRouteBy(
         JSBI.multiply(
           routeWithValidQuote.gasCostInUSD.quotient,
           JSBI.exponentiate(
-            jsbi_1.default.BigInt(10),
-            jsbi_1.default.BigInt(decimalsDiff)
+            JSBI.BigInt(10),
+            JSBI.BigInt(decimalsDiff)
           )
         )
       );
@@ -398,8 +398,8 @@ export async function getBestSwapRouteBy(
         JSBI.multiply(
           gasCostL1USD.quotient,
           JSBI.exponentiate(
-            jsbi_1.default.BigInt(10),
-            jsbi_1.default.BigInt(decimalsDiff)
+            JSBI.BigInt(10),
+            JSBI.BigInt(decimalsDiff)
           )
         )
       )

@@ -1,6 +1,7 @@
 import { parseUnits } from '@ethersproject/units';
 import { CurrencyAmount as CurrencyAmountRaw } from '@uniswap/sdk-core';
 import { FeeAmount } from '@uniswap/v3-sdk';
+import JSBI from 'jsbi';
 export class CurrencyAmount extends CurrencyAmountRaw {}
 export const MAX_UINT160 = '0xffffffffffffffffffffffffffffffffffffffff';
 // Try to parse a user entered amount for a given token
@@ -8,7 +9,7 @@ export function parseAmount(value, currency) {
   const typedValueParsed = parseUnits(value, currency.decimals).toString();
   return CurrencyAmount.fromRawAmount(
     currency,
-    jsbi_1.default.BigInt(typedValueParsed)
+    JSBI.BigInt(typedValueParsed)
   );
 }
 export function parseFeeAmount(feeAmountStr) {

@@ -460,12 +460,12 @@ export class AlphaRouter {
               pool.token1.equals(position.pool.token1) &&
               pool.fee == position.pool.fee
             ) {
-              targetPoolPriceUpdate = jsbi_1.default.BigInt(
+              targetPoolPriceUpdate = JSBI.BigInt(
                 v3Route.sqrtPriceX96AfterList[i].toString()
               );
               optimalRatio = this.calculateOptimalRatio(
                 position,
-                jsbi_1.default.BigInt(targetPoolPriceUpdate.toString()),
+                JSBI.BigInt(targetPoolPriceUpdate.toString()),
                 zeroForOne
               );
             }
@@ -1447,7 +1447,7 @@ export class AlphaRouter {
     ) {
       return new Fraction(0, 1);
     }
-    const precision = jsbi_1.default.BigInt('1' + '0'.repeat(18));
+    const precision = JSBI.BigInt('1' + '0'.repeat(18));
     let optimalRatio = new Fraction(
       SqrtPriceMath.getAmount0Delta(
         sqrtRatioX96,
@@ -1485,16 +1485,10 @@ export class AlphaRouter {
     }
   }
   absoluteValue(fraction) {
-    const numeratorAbs = JSBI.lessThan(
-      fraction.numerator,
-      jsbi_1.default.BigInt(0)
-    )
+    const numeratorAbs = JSBI.lessThan(fraction.numerator, JSBI.BigInt(0))
       ? JSBI.unaryMinus(fraction.numerator)
       : fraction.numerator;
-    const denominatorAbs = JSBI.lessThan(
-      fraction.denominator,
-      jsbi_1.default.BigInt(0)
-    )
+    const denominatorAbs = JSBI.lessThan(fraction.denominator, JSBI.BigInt(0))
       ? JSBI.unaryMinus(fraction.denominator)
       : fraction.denominator;
     return new Fraction(numeratorAbs, denominatorAbs);
